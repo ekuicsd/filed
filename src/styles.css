@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~ngx-toastr/toastr";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container,
+.container-fluid {
+  padding: 50px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.container-fluid {
+  padding: 80px 150px;
+}
+
+.text-primary {
+  color: #008cc9;
+}
+
+.bg-primary {
+  background: #008cc9;
+}
+
+.bgSecondary {
+  background: #ff6e4e;
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}

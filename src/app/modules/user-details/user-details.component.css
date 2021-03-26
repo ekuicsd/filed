@@ -1,0 +1,51 @@
+.bg {
+  background-image: url("/assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+h5,
+h4 {
+  font-weight: bolder;
+}
+
+.loginForm {
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  /* width: 00px; */
+  padding: 50px;
+}
+
+.right-border {
+  border-right: none;
+  width: 80px;
+  background: white;
+}
+
+.left-border {
+  border-left: none;
+}
+
+.buttonIn {
+  /* width: 300px;  */
+  position: relative;
+  padding-left: 50px;
+}
+
+#clear {
+  position: absolute;
+  border-radius: 5px;
+  left: 170px;
+  z-index: 100;
+  border: none;
+  top: 8px;
+  height: 30px;
+  cursor: text;
+  background-color: transparent;
+  transform: translateX(2px);
+}
+
+.indendRight {
+  margin-left: 180px;
+}
