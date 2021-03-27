@@ -52,6 +52,8 @@ export class UserDetailsComponent implements OnInit {
       });
       this._paymentService.submitUserData(this.userForm.value).subscribe(res => {
         // operate data;
+        this.createUserForm();
+        this.selectedCountryCode = '91';
         this._toastr.success("Request Completed");
       }, err => console.log(err));
     } else {
