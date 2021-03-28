@@ -1,3 +1,5 @@
+import * as UserDeatilsAction from './../../store/user-details.action';
+import { User } from './../../models/user.model';
 import { PaymentService } from './../../services/payment.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +7,8 @@ import codes from 'country-telephone-data';
 import { ToastrService } from 'ngx-toastr';
 import { Country } from 'src/app/models/country.model';
 import { CustomValidator } from 'src/app/validators/custom.validator';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -19,6 +23,8 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,
     private _paymentService: PaymentService,
+    private _router: Router,
+    private _store: Store<{ userDetails: { users: User[] } }>,
     private _toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -50,12 +56,16 @@ export class UserDetailsComponent implements OnInit {
       this.userForm.patchValue({
         phoneNumber: this.selectedCountryCode + this.userForm.value.phoneNumber
       });
+      //should come into after label 
+      this._store.dispatch(new UserDeatilsAction.AddUser(this.userForm.value));
+      this._toastr.success("Request Completed");
+      this._router.navigate(['/home']);
       this._paymentService.submitUserData(this.userForm.value).subscribe(res => {
-        // operate data;
+        // after label
         this.createUserForm();
         this.selectedCountryCode = '91';
-        this._toastr.success("Request Completed");
       }, err => console.log(err));
+      this.createUserForm();
     } else {
       this._toastr.error("Please fill valid details")
     }

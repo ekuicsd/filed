@@ -10,7 +10,9 @@ import { PaymentService } from './services/payment.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { UserDetailsReducers } from './store/user-details.reducers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +22,13 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ userDetails: UserDetailsReducers })
   ],
   providers: [
     PaymentService

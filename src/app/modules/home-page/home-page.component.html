@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row">
+    <div class="col" *ngIf="(usersList| async).users.length > 0">
+      <div class="card mb-3" *ngFor="let user of (usersList| async).users">
+        <div class="card-body">
+          <h5 class="card-title">{{user?.firstName}} {{user?.lastName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{user?.email}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{user?.phoneNumber}}</h6>
+          <p class="card-text">{{user?.budget}}
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="col text-center">
-      <button [routerLink]="['/user']" class="btn bgPrimary btn-lg text-white">Proceed</button>
+      <button [routerLink]="['/user']" class="btn bgPrimary btn-lg text-white mt-5">Proceed</button>
     </div>
   </div>
 </div>
